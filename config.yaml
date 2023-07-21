@@ -1,0 +1,5 @@
+# where are the ckpts stored?
+
+annotator_ckpts_path: "$SD_ROOT_PATH/models/ControlNet"
+skip_v1: True
+annotator_ckpts_path: "$SD_ROOT_PATH/models/ControlNet/annotator/models"

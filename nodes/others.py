@@ -1,5 +1,5 @@
 from .util import common_annotator_call, img_np_to_tensor
-from ..v11 import tile, inpaint
+from ..v11 import tile, inpaint, shuffle
 from .. import mp_face_mesh, color
 
 class Media_Pipe_Face_Mesh_Preprocessor:
@@ -47,7 +47,7 @@ class Tile_Preprocessor:
     def preprocess(self, image, pyrUp_iters):
         np_detected_map = common_annotator_call(tile.preprocess, image, pyrUp_iters)
         return (img_np_to_tensor(np_detected_map),)
-    
+
 class Inpaint_Preprocessor:
     @classmethod
     def INPUT_TYPES(s):
@@ -60,10 +60,23 @@ class Inpaint_Preprocessor:
     def preprocess(self, image, mask):
         return (inpaint.preprocess(image, mask),)
 
+class Shuffle_Preprocessor:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": { "image": ("IMAGE",) }}
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "preprocess"
+
+    CATEGORY = "preprocessors/shuffle"
+
+    def preprocess(self, image):
+        np_detected_map = common_annotator_call(shuffle.preprocess, image,)
+        return (img_np_to_tensor(np_detected_map),)
 
 NODE_CLASS_MAPPINGS = {
     "MediaPipe-FaceMeshPreprocessor": Media_Pipe_Face_Mesh_Preprocessor,
     "ColorPreprocessor": Color_Preprocessor,
     "TilePreprocessor": Tile_Preprocessor,
-    "InpaintPreprocessor":Inpaint_Preprocessor,
+    "InpaintPreprocessor": Inpaint_Preprocessor,
+    "ShufflePreprocessor": Shuffle_Preprocessor,
 }

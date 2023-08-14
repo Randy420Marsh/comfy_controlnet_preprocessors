@@ -1,6 +1,6 @@
 @echo off
-CALL :NORMALIZEPATH "python3.exe"
-if exist "python3" (
+CALL :NORMALIZEPATH "python.exe"
+if exist "python" (
     echo Custom Python build of ComfyUI standalone executable detected:
     echo "%RETVAL%"
     echo --------------------------------------------------
@@ -11,7 +11,7 @@ if exist "python3" (
     echo Custom Python not found. Use system's Python executable instead:
     echo %PYTHON_PATH%
     echo --------------------------------------------------
-    python3 install-no-re-download.py %1
+    python install-no-re-download.py %1
 )
 
 :NORMALIZEPATH

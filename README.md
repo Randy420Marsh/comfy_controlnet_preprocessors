@@ -1,4 +1,5 @@
 # ControlNet Preprocessors for [ComfyUI](https://github.com/comfyanonymous/ComfyUI)
+# THIS REPO IS ARCHVIED. THE WIP REWORK OF IT IS https://github.com/Fannovel16/comfyui_controlnet_aux
 Moved from https://github.com/comfyanonymous/ComfyUI/pull/13 <br>
 Original repo: https://github.com/lllyasviel/ControlNet <br>
 List of my comfyUI node repos: https://github.com/Fannovel16/FN16-ComfyUI-nodes
